@@ -9,8 +9,8 @@ module.exports = (matrix) => {
     while ((r = reg.exec(str))) {
       arr.push([r.index, r.index + r[0].length - 1])
     }
-    return arr.length ? arr : null
-  }).filter(Boolean)
+    return arr
+  })
 
   let recur = (arr, result, n = 1) => {
     let top = arr.pop()
