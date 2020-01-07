@@ -35,18 +35,23 @@
 // *   [16, 7,10,11]
 // * ]
 
+// * 思路：1. 上下翻转整个数组
+// *      2. 依据 (0, 0) 到 (n - 1, n - 1) 矩阵对角线进行翻转
 exports.rotate = (matrix) => {
   if (matrix.length === 1) return matrix
   let temp
   let len = matrix.length
+  // * 上下翻转，注意：遍历时只需要遍历一半即可
   for (let i = 0; i < Math.floor(len / 2); i++) {
     temp = matrix[i]
     matrix[i] = matrix[len - 1 - i]
     matrix[len - 1 - i] = temp
   }
+  // * 对角线翻转
   for (let i = 0; i < len; i++) {
-    for (let j = 0; j < len; j++) {
-      if (i === j || i > j) continue
+    // * 当 i === j 时，说明是在对角线上，不用交换
+    // * 当 i > j 时，该元素已经被交换过了，无需再次交换
+    for (let j = 0; j < i; j++) {
       temp = matrix[i][j]
       matrix[i][j] = matrix[j][i]
       matrix[j][i] = temp
