@@ -1,12 +1,18 @@
-const { distance } = require('../../my-code/dynamic/distance')
+const { distance, bestDistance } = require('../../my-code/dynamic/distance')
 
-// test('不同路径', () => {
-//   expect(distance([
-//     [0, 0, 0],
-//     [0, 1, 0],
-//     [0, 0, 0]
-//   ])).toBe(2)
-// })
+test('不同路径', () => {
+  expect(bestDistance([
+    [0, 0, 0],
+    [0, 1, 0],
+    [0, 0, 0]
+  ])).toBe(2)
+
+  expect(distance([
+    [0, 0, 0],
+    [0, 1, 0],
+    [0, 0, 0]
+  ])).toBe(2)
+})
 
 test('不同路径2', () => {
   let input = [
@@ -781,5 +787,5 @@ test('不同路径2', () => {
       0
     ]
   ]
-  expect(distance(input)).toBe(1637984640)
+  expect(bestDistance(input)).toBe(1637984640)
 })
